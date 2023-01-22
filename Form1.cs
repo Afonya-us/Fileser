@@ -7,17 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using System.Xml;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        public static string connectionString = "Server=DESKTOP-QIN1VF9\\SQLEXPRESS;Database=USERS;Trusted_Connection=True; encrypt=false;"; //VEMZ
-        public static string sql = "SELECT * FROM dbo.USER_LOGINS"; //VEMZ
+        //public static string connectionString = "Server=DESKTOP-QIN1VF9\\SQLEXPRESS;Database=USERS;Trusted_Connection=True; encrypt=false;"; //VEMZ
+        //public static string sql = "SELECT * FROM dbo.USER_LOGINS"; //VEMZ
 
-        //public static string connectionString = "Server=DESKTOP-KTETICJ\\SQLEXPRESS;Database=fileser;Trusted_Connection=True; encrypt=false;";//home
-        //public static string sql = "SELECT * FROM dbo.USER_LOGIN";//home
+        public static string connectionString = "Server=DESKTOP-KTETICJ\\SQLEXPRESS;Database=fileser;Trusted_Connection=True; encrypt=false;";//home
+        public static string sql = "SELECT * FROM dbo.USER_LOGIN";//home
         public Form1()
         {
             InitializeComponent();
@@ -26,9 +27,7 @@ namespace WindowsFormsApp1
 
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            var login = textBox1.Text.ToString();
-            var pass = textBox2.Text.ToString();
+        {        
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
@@ -135,6 +134,11 @@ namespace WindowsFormsApp1
             filseSer brow = new filseSer();
             brow.Show();
             this.Close();
+        }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Справка", "made by Stein");
         }
     }
     }

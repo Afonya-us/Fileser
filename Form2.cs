@@ -13,22 +13,25 @@ namespace WindowsFormsApp1
 {
     public partial class Form2 : Form
     {
-        public static string connectionString = "Server=DESKTOP-QIN1VF9\\SQLEXPRESS;Database=USERS;Trusted_Connection=True; encrypt=false;"; //VEMZ
-        public static string sql = "SELECT * FROM dbo.USER_LOGINS"; //VEMZ
-        public static string id_f = "SELECT pass FROM dbo.USER_LOGINS where id=@id_ch";//VEMZ
+        //public static string connectionString = "Server=DESKTOP-QIN1VF9\\SQLEXPRESS;Database=USERS;Trusted_Connection=True; encrypt=false;"; //VEMZ
+        //public static string sql = "SELECT * FROM dbo.USER_LOGINS"; //VEMZ
+        //public static string id_f = "SELECT pass FROM dbo.USER_LOGINS where id=@id_ch";//VEMZ
         public static int user_acc;
 
-        //public static string connectionString = "Server=DESKTOP-KTETICJ\\SQLEXPRESS;Database=fileser;Trusted_Connection=True; encrypt=false;";//home
-        //public static string sql = "SELECT * FROM dbo.USER_LOGIN";//home
-        //public static string id_f = "SELECT pass FROM dbo.USER_LOGIN where id=@id_ch";//home
+        public static string connectionString = "Server=DESKTOP-KTETICJ\\SQLEXPRESS;Database=fileser;Trusted_Connection=True; encrypt=false;";//home
+        public static string sql = "SELECT * FROM dbo.USER_LOGIN";//home
+        public static string id_f = "SELECT pass FROM dbo.USER_LOGIN where id=@id_ch";//home
 
         public Form2()
         {
             InitializeComponent();
+
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
@@ -39,7 +42,7 @@ namespace WindowsFormsApp1
                 comboBox1.DataSource = ds.Tables[0].DefaultView;
                 comboBox1.DisplayMember = "login";
                 comboBox1.ValueMember = "id";
-                
+                this.ActiveControl = textBox2;
             }
         }
 
@@ -154,6 +157,15 @@ namespace WindowsFormsApp1
             }
             else
                 textBox2.PasswordChar = '*';
+        }
+
+        private void button1_KeyDown(object sender, KeyEventArgs e)
+        {
+        }
+
+        private void Form2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) button1.PerformClick();
         }
     }
 }

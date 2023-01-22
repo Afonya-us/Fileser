@@ -140,6 +140,7 @@ namespace WindowsFormsApp1
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             resources.ApplyResources(this.справкаToolStripMenuItem, "справкаToolStripMenuItem");
+            this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // Form1
             // 
